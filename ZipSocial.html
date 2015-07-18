@@ -3,8 +3,34 @@
 </head>
 
 <body>
-  <h1>Welcome to ZipSocial!</h1>
+  <div class="container">
+    <h1>Welcome to ZipSocial!</h1>
+    <header>
+      <form class="new-comment">
+        <input type="text" class="form-control" name="comment" placeholder="Type to add new comment"/>
+      </form>
+    </header><br>
+      {{#each comments}}
+      <div class="row">
+        <div class="col-sm-1">
+        <div class="thumbnail">
+        <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+        </div><!-- /thumbnail -->
+        </div><!-- /col-sm-1 -->
+        <div class="col-sm-11">
+        <div class="panel panel-default">
+        <div class="panel-heading">
+        <span class="label label-info">{{email}}</span> <span class="text-muted">commented 5 days ago</span>
+        </div>
+        <div class="panel-body">
+        {{> discussion}}
+        </div><!-- /panel-body -->
+        </div><!-- /panel panel-default -->
+        </div>
+      </div>
+      {{/each}}
+  </div>
 </body>
-
-<template name="">
+<template name="discussion">
+    <p>{{comment}} <button class="btn btn-danger pull-right delete">delete</button></p> 
 </template>
