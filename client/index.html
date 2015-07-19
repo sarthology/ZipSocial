@@ -72,13 +72,13 @@
         <div class="row">
           <div class="col-sm-1">
           <div class="thumbnail">
-          <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+          <img class="img-responsive user-photo" src="{{imageFromId username}}">
           </div><!-- /thumbnail -->
           </div><!-- /col-sm-1 -->
           <div class="col-sm-11">
           <div class="panel panel-default">
           <div class="panel-heading">
-          <span class="label label-info">{{username}}</span> <span class="text-muted">commented 5 days ago</span>
+          <span class="label label-info">{{usernameFromId username}}</span> <span class="text-muted">commented on {{timestampToTime createdAt}}</span>
           </div>
           <div class="panel-body">
             <p>{{comment}} <button class="btn btn-danger pull-right delete">delete</button></p>
