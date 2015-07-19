@@ -1,11 +1,34 @@
-Comments = new Mongo.Collection("comments");
-if (Meteor.isClient) {
-  Template.body.helpers({
+
+  Template.discussion.helpers({
     comments:function () {
       return Comments.find({}, {sort: {createdAt: -1}});
     }
   });
 
+  Template.loggedOut.events({
+    "click #login":function(e,tmpl){
+      Meteor.loginWithGithub({
+        requestPermissions:['user','public_repo']
+      },function(err){
+        if (err) {
+
+        } else {
+
+        }
+      });
+    }
+  });
+  Template.loggedIn.events({
+    "click #logout":function(e,tmpl) {
+      Meteor.logout(function(err){
+        if (err) {
+
+        } else {
+
+        }
+      });
+    }
+  });
   Template.body.events({
     "submit .new-comment": function (event) {
     event.preventDefault();
@@ -16,7 +39,7 @@ if (Meteor.isClient) {
     // Insert a comment
     Comments.insert({
       comment: comment,
-      email: "Yoda@starwars.com",
+      username: Meteor.userId(),
       createdAt: new Date() // current time
     });
 
@@ -35,9 +58,3 @@ if (Meteor.isClient) {
      Comments.remove(this._id);
    }
  });
-
-}
-
-if (Meteor.isServer) {
-
-}

@@ -1,0 +1,94 @@
+<head>
+  <title>ZipSocial</title>
+</head>
+
+<body>
+  {{>header}}
+  {{#if currentUser}}
+    {{>discussion}}
+  {{else}}
+    {{>landing}}
+  {{/if}}
+</body>
+
+<template name="header">
+  <div class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">ZipBoard</a>
+        </div>
+              {{> user_info}}
+      </div>
+  </div>
+</template>
+<template name="user_info">
+  <ul class="nav navbar-nav navbar-right">
+    {{#if currentUser}}
+      {{>loggedIn}}
+    {{else}}
+      {{>loggedOut}}
+    {{/if}}
+  </ul>
+</template>
+<template name="loggedIn">
+  {{#if loggindIn}}
+    <li><a>logging in....</a></li>
+  {{else}}
+    <li>
+      <img class="img-rounded" src="{{currentUser.profile.avatar_url}}" style="height: 32px; margin-top: 4px;" alt="">
+    </li>
+    <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            {{currentUser.profile.login}}
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Separated link</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a id="logout">Logout</a></li>
+          </ul>
+      </li>
+  {{/if}}
+</template>
+<template  name="loggedOut">
+  <li><a id="login">Login with Github</a></li>
+</template>
+<!-- Template discussion -->
+<template name="discussion">
+    <div class="container">
+      <h1>Welcome to ZipSocial!</h1><br>
+      <header>
+        <form class="new-comment">
+          <input type="text" class="form-control" name="comment" placeholder="Type to add new comment"/>
+        </form>
+      </header><br>
+        {{#each comments}}
+        <div class="row">
+          <div class="col-sm-1">
+          <div class="thumbnail">
+          <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+          </div><!-- /thumbnail -->
+          </div><!-- /col-sm-1 -->
+          <div class="col-sm-11">
+          <div class="panel panel-default">
+          <div class="panel-heading">
+          <span class="label label-info">{{username}}</span> <span class="text-muted">commented 5 days ago</span>
+          </div>
+          <div class="panel-body">
+            <p>{{comment}} <button class="btn btn-danger pull-right delete">delete</button></p>
+          </div><!-- /panel-body -->
+          </div><!-- /panel panel-default -->
+          </div>
+        </div>
+        {{/each}}
+    </div>
+</template>
+<template name="landing">
+  <h1>Please Enter !!</h1>
+</template>

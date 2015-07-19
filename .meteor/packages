@@ -9,3 +9,7 @@ autopublish
 insecure
 mizzao:bootstrap-3
 momentjs:moment
+accounts-ui
+accounts-password
+accounts-github
+service-configuration
