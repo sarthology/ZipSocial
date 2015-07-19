@@ -5,7 +5,7 @@
     }
   });
 
-  Template.loggedOut.events({
+  Template.landing.events({
     "click #login":function(e,tmpl){
       Meteor.loginWithGithub({
         requestPermissions:['user','public_repo']
@@ -68,7 +68,7 @@
     if (typeof user.services.github !== "undefined") {
         return(user.profile.avatar_url);
     }
-    //return user.username;
+    return user.username;
   });
 
   Template.registerHelper("timestampToTime", function (timestamp) {

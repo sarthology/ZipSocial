@@ -1,1 +1,10 @@
 /* CSS declarations go here */
+.headPod{
+width: 100%;
+height: 600px;
+background-color: #FF616B;
+margin-top: -20px;
+}
+.infor{
+  padding: 80px;
+}

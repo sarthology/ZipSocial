@@ -57,7 +57,7 @@
   {{/if}}
 </template>
 <template  name="loggedOut">
-  <li><a id="login">Login with Github</a></li>
+  <li></li>
 </template>
 <!-- Template discussion -->
 <template name="discussion">
@@ -90,5 +90,21 @@
     </div>
 </template>
 <template name="landing">
-  <h1>Please Enter !!</h1>
+  <div class="headPod">
+    <div class="infor">
+      <div class="col-md-8">
+        <h1>Welcome to ZipSocial !!</h1>
+        <br>
+        <div class="row">
+          <p class="lead col-md-6">Stay in touch with your github friends and discuss new topic daily.</p>
+        </div>
+        <div class="row">
+          <p class="lead col-md-7">Made in Leading edge technology like Meteor.js and MongoDB</p>
+        </div>
+        <button type="button" id="login" class="btn btn-default btn-lg">Login/Signup with Github</button>
+      </div>
+    </div>
+
+    <img src="original.png" style="position: absolute;width: 300px;top: 251px;right: 15px;" alt="">
+  </div>
 </template>
